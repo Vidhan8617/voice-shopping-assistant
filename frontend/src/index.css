@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  /* Color system — warm paper ground, deep forest primary, mustard accent
+     for the voice/action moments, muted sage for success, soft rust for
+     destructive actions. Deliberately not the cream+terracotta default. */
+  --color-paper: #fbf7ee;
+  --color-paper-line: #e4ddc9;
+  --color-ink: #232323;
+  --color-ink-soft: #5c5850;
+  --color-forest: #1c3b2a;
+  --color-forest-light: #2d5540;
+  --color-sage: #7a9b7e;
+  --color-sage-light: #e4ede5;
+  --color-mustard: #d9a441;
+  --color-mustard-dark: #b88430;
+  --color-rust: #c1502e;
+  --color-rust-light: #f5e2da;
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-paper);
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-mustard-dark);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .receipt-divider {
+    border-bottom: 1.5px dashed var(--color-paper-line);
+  }
+}
+
+@keyframes sound-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+@keyframes print-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-sound-ring {
+  animation: sound-ring 1.6s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+}
+
+.animate-print-in {
+  animation: print-in 0.25s ease-out;
+}
