@@ -1,6 +1,6 @@
 import type { Product, ShoppingItem, Suggestion, VoiceCommandResult } from "../types";
 
-const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const BASE_URL = import.meta.env.VITE_API_URL || "https://voice-shopping-assistant-backend.vercel.app";
 
 /**
  * Thin fetch wrapper: every call goes through here so error handling,
